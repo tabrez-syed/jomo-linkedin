@@ -1,0 +1,21 @@
+{
+  "name": "jomo-linkedin",
+  "version": "0.1.0",
+  "description": "Platform-native friction for LinkedIn — pause-gate prompt at end of feed plus an in-page session timer",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "wxt",
+    "build": "echo 'scaffold only — wire up wxt build during first port session'",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.3.0",
+    "vitest": "^3.2.4",
+    "wxt": "latest"
+  }
+}

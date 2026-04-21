@@ -1,0 +1,58 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    name: Build & test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        # Uses npm install until first port session generates package-lock.json;
+        # flip to `npm ci` in the PR that lands the lockfile.
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Unit tests
+        run: npm test
+
+  issue-on-main-failure:
+    name: File CI failure issue
+    needs: build-test
+    if: failure() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "[ci] main failed at ${SHORT_SHA}" \
+            --label "bug,origin:ci" \
+            --body "CI failed on \`main\` at commit \`${SHORT_SHA}\`.
+
+          **Workflow run:** ${RUN_URL}
+          **Commit:** ${{ github.event.head_commit.message }}
+
+          Investigate and push a fix."
