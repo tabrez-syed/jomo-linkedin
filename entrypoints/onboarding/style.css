@@ -1,0 +1,182 @@
+@import '../shared/theme.css';
+
+body {
+  background: var(--color-bg);
+}
+
+.jomo-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.jomo-layer {
+  position: absolute;
+  inset: -24vh 0;
+}
+
+.jomo-layer-sky {
+  background: url('/background.jpg') center 24% / cover no-repeat;
+  opacity: var(--j-bg-image-opacity, 0.86);
+  transform: translate3d(0, var(--j-parallax-sky-y, 0), 0);
+}
+
+.jomo-layer-sky-overlay {
+  background: var(
+    --j-bg-sky-gradient,
+    linear-gradient(180deg, rgba(139, 160, 151, 0.3) 0%, rgba(143, 164, 156, 0.34) 45%, rgba(231, 239, 234, 0.47) 100%)
+  );
+}
+
+.jomo-layer-hills {
+  background: radial-gradient(100% 38% at 50% 100%, rgba(41, 70, 72, 0.28), rgba(41, 70, 72, 0) 70%);
+  transform: translate3d(0, var(--j-parallax-hills-y, 0), 0);
+}
+
+.jomo-layer-trees {
+  background:
+    radial-gradient(40% 40% at -5% 50%, rgba(17, 49, 53, 0.22), transparent 75%),
+    radial-gradient(40% 40% at 105% 50%, rgba(17, 49, 53, 0.22), transparent 75%);
+  transform: translate3d(0, var(--j-parallax-trees-y, 0), 0);
+}
+
+.onboarding-shell {
+  min-height: 100vh;
+  padding: var(--space-shell-desktop);
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.wizard-card {
+  width: min(760px, 100%);
+  border: var(--panel-border);
+  border-radius: var(--radius-card);
+  background: var(--color-panel);
+  padding: var(--space-panel-padding);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: var(--panel-backdrop);
+}
+
+.wizard-header h1 {
+  margin: 0.35rem 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: var(--type-hero-size);
+  line-height: var(--type-hero-lh);
+  letter-spacing: var(--type-hero-spacing);
+  font-weight: var(--weight-display);
+  color: var(--color-text);
+  font-optical-sizing: auto;
+}
+
+.step-label {
+  margin: 0;
+  font-size: var(--type-eyebrow-size);
+  text-transform: uppercase;
+  letter-spacing: var(--type-eyebrow-spacing);
+  color: var(--color-text-muted);
+  font-weight: var(--weight-ui-medium);
+}
+
+.wizard-description {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--color-text-muted);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  font-weight: var(--weight-ui-medium);
+}
+
+.wizard-points {
+  margin: 1.25rem 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+  max-width: 56ch;
+}
+
+.wizard-points li {
+  font-size: var(--type-card-body-size);
+  line-height: var(--type-card-body-lh);
+  color: var(--color-text);
+}
+
+.wizard-indicators {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.indicator {
+  width: 30px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-strong);
+}
+
+.indicator.active {
+  background: var(--color-accent-strong);
+}
+
+.wizard-actions {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: flex-end;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.05rem;
+  font-weight: var(--weight-ui-semibold);
+  cursor: pointer;
+  font-size: 0.94rem;
+  min-height: 40px;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn-primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+.btn-secondary {
+  border-color: var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-accent-strong);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .onboarding-shell {
+    padding: var(--space-shell-mobile);
+  }
+
+  .wizard-actions {
+    justify-content: stretch;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
