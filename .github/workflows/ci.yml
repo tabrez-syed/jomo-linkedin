@@ -19,18 +19,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          # cache: 'npm' re-enabled once package-lock.json lands in the first port PR
+          cache: 'npm'
 
       - name: Install dependencies
-        # Uses npm install until first port session generates package-lock.json;
-        # flip to `npm ci` in the PR that lands the lockfile.
-        run: npm install
+        run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Type check
+        run: npm run compile
 
       - name: Unit tests
         run: npm test
+
+      - name: Build
+        run: npm run build
 
   issue-on-main-failure:
     name: File CI failure issue

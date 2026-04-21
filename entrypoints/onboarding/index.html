@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Jomo</title>
+  </head>
+  <body>
+    <main class="onboarding-shell">
+      <section class="wizard-card" aria-live="polite">
+        <header class="wizard-header">
+          <p id="wizard-step-label" class="step-label">Step 1 of 3</p>
+          <h1 id="wizard-title">Welcome to Jomo</h1>
+          <p id="wizard-description" class="wizard-description"></p>
+        </header>
+
+        <ul id="wizard-points" class="wizard-points"></ul>
+
+        <div id="wizard-extra" class="wizard-extra"></div>
+
+        <div id="wizard-indicators" class="wizard-indicators" aria-label="Onboarding progress"></div>
+
+        <footer class="wizard-actions">
+          <button id="wizard-back" class="btn btn-secondary" type="button" hidden>Back</button>
+          <button id="wizard-next" class="btn btn-primary" type="button">Next</button>
+          <button id="wizard-done" class="btn btn-primary" type="button" hidden>Done</button>
+        </footer>
+      </section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

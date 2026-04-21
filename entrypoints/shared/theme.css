@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/Manrope-Variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/SourceSerif4-Variable.ttf') format('truetype');
+}
+
+:root {
+  color-scheme: light;
+
+  /* Brand tokens (JOMO) */
+  --j-paper: #eef2ec;
+  --j-paper-strong: #e6ece4;
+  --j-ink: #102025;
+  --j-muted: #4f6566;
+  --j-line: #cad5cc;
+  --j-sage: #6d8f7d;
+  --j-sage-deep: #365754;
+  --j-card: rgba(248, 251, 247, 0.9);
+  --j-card-soft: rgba(233, 239, 233, 0.76);
+  --j-button-primary: #173130;
+  --j-button-primary-text: #f0f7ef;
+
+  /* Semantic tokens */
+  --font-ui: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --weight-ui-regular: 400;
+  --weight-ui-medium: 500;
+  --weight-ui-semibold: 600;
+  --weight-display: 600;
+
+  --type-eyebrow-size: 0.72rem;
+  --type-eyebrow-spacing: 0.14em;
+  --type-hero-size: clamp(2.2rem, 4.8vw, 4.6rem);
+  --type-hero-lh: 1.05;
+  --type-hero-spacing: -0.012em;
+  --type-section-size: clamp(1.55rem, 2.4vw, 2.4rem);
+  --type-body-size: 1rem;
+  --type-body-lh: 1.84;
+  --type-card-body-size: 0.94rem;
+  --type-card-body-lh: 1.68;
+  --color-bg: var(--j-paper);
+  --color-bg-strong: var(--j-paper-strong);
+  --color-panel: var(--j-card);
+  --color-surface-soft: var(--j-card-soft);
+  --color-text: var(--j-ink);
+  --color-text-muted: var(--j-muted);
+  --color-border: var(--j-line);
+  --color-accent: var(--j-sage);
+  --color-accent-strong: var(--j-sage-deep);
+  --button-primary-bg: var(--j-button-primary);
+  --button-primary-text: var(--j-button-primary-text);
+
+  --radius-card: 18px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 8px 26px rgba(34, 70, 67, 0.08);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.5);
+  --card-border: 1px solid var(--j-line);
+  --panel-backdrop: blur(5px);
+  --content-max-width: 1080px;
+  --space-shell-desktop: 1rem 1rem 2.5rem;
+  --space-shell-mobile: 0.82rem 0.65rem 2rem;
+  --space-main-gap: 1.2rem;
+  --space-grid-gap: 0.8rem;
+  --space-card-padding: 1rem;
+  --space-card-title-body-gap: 0.55rem;
+  --space-card-body-action-gap: 0.75rem;
+  --space-section-title-to-cards: 1rem;
+  --space-panel-padding: clamp(1.25rem, 2.4vw, 2.3rem);
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-ui-regular);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
